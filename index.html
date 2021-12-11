@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<title></title>
+		<link href="css/h-m-css.css" rel="stylesheet">
+		<script src="scr/jquery.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=DM+Serif+Display&display=swap" rel="stylesheet"> 
+	</head>
+	
+	<body>
+		<div class="bg">
+			
+			<div class="map">
+				<canvas id="mycanvas" width="2000" height="2000" style=""></canvas>
+				<div class="city Shiraz"></div>
+				<div class="day Sh1"></div>
+				<div class="day Sh2"></div>
+				<div class="day Sh3"></div>
+				<div class="day Sh45"></div>
+				<div class="day Sh6"></div>
+				<div class="day Sh7"></div>
+				<div class="day Sh8"></div>
+				<p class="city-t Shiraz">Shiraz</p>
+				<div class="city Isfahan"></div>
+				<p class="city-t Isfahan">Isfahan</p>
+				<div class="city Kashan"></div>
+				<p class="city-t Kashan">Kashan</p>
+				<div class="city Tehran"></div>
+				<p class="city-t Tehran">Tehran</p>
+				
+			</div>
+			
+			<div class="daycount">8 Days</div>
+			<div class="m-title">A whistle stop tour</div>
+			<div class="logo"></div>
+			<div class="info">Info</div>
+			<div class="home">Home</div>
+			<!--<div class="enquiry">Make an Enquiry</div>-->
+			<div class="day-t d1">
+				<p class="title">Day 1</p>
+				<div class="img i1"></div>
+				<p class="txt">Arrive at Shiraz’s international airport and transfer to hotel. Rest of day/evening at leisure. Overnight Shiraz.</p>
+			</div>
+			<div class="day-t d2">
+				<p class="title">Day 2</p>
+				<div class="img i2"></div>
+				<p class="txt">Situated in the heart of Fars Province, Shiraz is widely regarded as the cradle of Persian civilization. Famed monuments include the Vakil Mosque and bath complex, and the beautiful 19th-century Nasir al-molk Mosque with its stunning tilework. Walk through some of the city’s celebrated gardens and visit the tombs of Hafiz and Saadi (the great Iranian poets). Take an afternoon stroll in the city’s famous covered Bazaar – an ideal opportunity for shopping and to try local foods, refreshments and sweets. Overnight Shiraz.</p>
+			</div>
+			<div class="day-t d3">
+				<p class="title">Day 3</p>
+				<div class="img i3"></div>
+				<p class="txt">Drive to Isfahan after breakfast. En route pause at Persepolis, probably Iran’s most impressive pre-Islamic monument) with its majestic columns, ceremonial staircases, chambers and stunning bas reliefs celebrating the triumphs of the Achaemenid Empire. Visit the nearby necropolis of Naqsh-e Rostam, the burial place of Achaemenid emperors and the tomb of Cyrus the Great at Pasargadae. Arrive Isfahan mid to late evening. Post-dinner stroll to city’s famed bridges. Overnight Isfahan.</p>
+			</div>
+			<div class="day-t d45">
+				<p class="title">Day 4-5</p>
+				<div class="img i45"></div>
+				<p class="txt">One of Iran’s great destinations, Isfahan is sometimes known as Nesf-e Jahan (meaning ‘half the world’) and is graced with some of the country’s finest and most celebrated architecture.  Two days allows plenty of time to explore its many highlights. Stroll through the great Naqsh-e Jahan Square (or Maidan-e Imam) and its ensemble of ancient domed mosques, arcades and delicate palaces. The nearby 17th-century bazaar is a masterpiece of urban design and still thronged with locals and small, almost boutique-like shops.  Visit the magnificent Jame mosque with its stupendous tilework and Julfa, the historic Armenian neighbourhood whose churches display a distinctive mix of Christian symbols and liturgy with an Iranian architectural style. Overnight Isfahan both days.</p>
+			</div>
+			<div class="day-t d6">
+				<p class="title">Day 6</p>
+				<div class="img i6"></div>
+				<p class="txt">Early morning drive to Tehran pausing in the ancient city of Kashan to visit Fin Garden, a 16th– to 19th-century classic Persian walled garden with channels of flowing water and pretty pavilions. After lunch visit a traditional Persian ‘palazzo’ townhouse. Arrive in Tehran late evening. Overnight Tehran.</p>
+			</div>
+			<div class="day-t d7">
+				<p class="title">Day 7</p>
+				<div class="img i7"></div>
+				<p class="txt">Visit the world-class National Museum showcasing the art and artefacts of    Ancient Iran and an astounding collection of treasures of Islamic Iran. Also visit the Glassware and Ceramic Museum, and the modernist Carpet Museum which displays an array of Persian designs. Time-permitting, also visit the vast 18th– and 19th-century Golestan Palace complex. Farewell Dinner. Overnight Tehran.</p>
+			</div>
+			<div class="day-t d8">
+				<p class="title">Day 8</p>
+				<div class="img i8"></div>
+				<p class="txt">Transfer to airport.  Depending on flight timings, day at leisure or additional pre-departure excursions in Tehran with guide.</p>
+			</div>
+			
+		</div>
+		<script>
+			$(document).ready(function(){
+				var ww = $(window).width();
+					wh = $(window).height();
+				$('.map').width(943/768*wh);
+				/*Resize Reload*/
+				$(window).bind('resize', function(e){
+					if (window.RT) clearTimeout(window.RT);
+					window.RT = setTimeout(function()
+					{
+						this.location.reload(false); 
+					}, 100);
+				});
+				/*Click*/
+				$('.home').click(function() {
+					window.location = 'home/index.html';
+				});
+				$('.city').click(function() {
+					if($(this).hasClass('city-c')){
+						$(this).removeClass('city-c');
+						$(this).addClass('city');
+						$(".day").fadeOut("slow");
+						$(".day-t").fadeOut("slow");
+					}
+					else{
+						$('.city-c').addClass('city');
+						$('.city-c').removeClass('city-c');
+						$(this).removeClass('city');
+						$(this).addClass('city-c');
+						$(".day").fadeOut("slow");
+						$(".day-t").fadeOut("slow");
+						if($(this).hasClass('Shiraz')){
+							$(".Sh1").fadeIn("slow");
+							$(".Sh2").fadeIn("slow");
+						}
+						else if($(this).hasClass('Isfahan')){
+							$(".Sh3").fadeIn("slow");
+							$(".Sh45").fadeIn("slow");
+						}
+						else if($(this).hasClass('Kashan')){
+							$(".Sh6").fadeIn("slow");
+						}
+						else if($(this).hasClass('Tehran')){
+							$(".Sh7").fadeIn("slow");
+							$(".Sh8").fadeIn("slow");
+						}
+					}
+				});
+				$('.day').click(function() {
+					$(".day-t").fadeOut("slow");
+					if($(this).hasClass('Sh1')){
+						$(".d1").fadeIn("slow");
+					}
+					else if($(this).hasClass('Sh2')){
+						$(".d2").fadeIn("slow");
+					}
+					else if($(this).hasClass('Sh3')){
+						$(".d3").fadeIn("slow");
+					}
+					else if($(this).hasClass('Sh45')){
+						$(".d45").fadeIn("slow");
+					}
+					else if($(this).hasClass('Sh6')){
+						$(".d6").fadeIn("slow");
+					}
+					else if($(this).hasClass('Sh7')){
+						$(".d7").fadeIn("slow");
+					}
+					else if($(this).hasClass('Sh8')){
+						$(".d8").fadeIn("slow");
+					}
+				});
+				/*hover*/
+				$(document).mousemove(function(e){
+					var x = $('.m-title').position();
+					var y = $('.logo').position();
+					if((e.pageX>=x.left) && (e.pageY>=x.top) && (e.pageX<=(x.left+$('.m-title').width())) && (e.pageY<=(x.top+$('.m-title').height()))){
+						$('.info').css('display','initial');
+						$('.info').css('left',e.pageX-15+"px");
+						$('.info').css('top',e.pageY-10+"px");
+					}
+					else{
+						$('.info').css('display','none');
+					}
+					if((e.pageX>=y.left) && (e.pageY>=y.top) && (e.pageX<=(y.left+$('.logo').width())) && (e.pageY<=(y.top+$('.logo').height()))){
+						$('.home').css('display','initial');
+						$('.home').css('left',e.pageX-15+"px");
+						$('.home').css('top',e.pageY-10+"px");
+					}
+					else{
+						$('.home').css('display','none');
+					}
+
+
+				});
+				/*canvas*/
+				var c = document.getElementById("mycanvas");
+				var ctx = c.getContext("2d");
+				var sh = $('.Shiraz').position();
+					I = $('.Isfahan').position();
+					T = $('.Tehran').position();
+					K = $('.Kashan').position();
+				function curve(){
+					ctx.globalAlpha=0.3;
+					ctx.lineWidth = 2;
+					ctx.beginPath();
+					ctx.moveTo(sh.left+5,sh.top+5);
+					ctx.bezierCurveTo(sh.left-40,I.top+120,sh.left-40,I.top+60,I.left+5,I.top+5);
+					ctx.stroke();
+					ctx.beginPath();
+					ctx.moveTo(I.left+5,I.top+5);
+					ctx.bezierCurveTo(I.left-10,K.top+50,I.left-10,K.top+10,K.left+5,K.top+5);
+					ctx.stroke();
+					ctx.beginPath();
+					ctx.moveTo(K.left+5,K.top+5);
+					ctx.bezierCurveTo(K.left+25,T.top+50,K.left+25,T.top+10,T.left+5,T.top+5);
+					ctx.stroke();
+				}
+				
+				var fps = 500;
+				var p = 0;
+				var direction = 1;
+
+				// start the animation
+				animate();
+
+				function animate() {
+
+				  // set the animation position (0-100)
+				  p += direction;
+				  if (p > 99) {
+					p = 0;
+				  }
+				  draw(p);
+				setTimeout(function() {
+					requestAnimationFrame(animate);
+				  }, 0);
+				  // request another frame
+				  
+				}
+				function draw(sliderValue) {
+					ctx.clearRect(0, 0, c.width, c.height);
+					curve();
+					var p = (sliderValue) / 100;
+					D(f1(p),p);
+					D(f2(p),p);
+					D(f3(p),p);
+				}
+				// draw tracking dot at xy
+				function D(point,opacity) {
+				ctx.globalAlpha=opacity;
+				  ctx.fillStyle = "#40E0D0";
+				  ctx.strokeStyle = "black";
+				  ctx.beginPath();
+				  ctx.arc(point.x, point.y, 5, 0, Math.PI * 2, false);
+				  ctx.closePath();
+				  ctx.fill();
+				  ctx.globalAlpha=1;
+				}
+
+				function f1(p) {
+				  var x = CubicN(p,sh.left+5, sh.left-40, sh.left-40, I.left+5);
+				  var y = CubicN(p,sh.top+5, I.top+120, I.top+60,I.top+5);
+				  return ({
+					x: x,
+					y: y
+				  });
+				}
+				function f2(p) {
+				  var x = CubicN(p,I.left+5, I.left-10, I.left-10, K.left+5);
+				  var y = CubicN(p,I.top+5, K.top+50, K.top+10,K.top+5);
+				  return ({
+					x: x,
+					y: y
+				  });
+				}
+				function f3(p) {
+				  var x = CubicN(p,K.left+5, K.left+25, K.left+25, T.left+5);
+				  var y = CubicN(p,K.top+5, T.top+50, T.top+10,T.top+5);
+				  return ({
+					x: x,
+					y: y
+				  });
+				}
+				// cubic helper formula at p distance
+				function CubicN(pct, a, b, c, d) {
+				  var t2 = pct * pct;
+				  var t3 = t2 * pct;
+				  return a + (-a * 3 + pct * (3 * a - a * pct)) * pct + (3 * b + pct * (-6 * b + b * 3 * pct)) * pct + (c * 3 - c * 3 * pct) * t2 + d * t3;
+				}
+				
+			});
+		</script>
+		
+	</body>
+	
+</html>
